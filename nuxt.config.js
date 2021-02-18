@@ -46,4 +46,8 @@ export default {
     fallback: true, // if you want to use '404.html'
     // fallback: 'my-fallback/file.html', // if your hosting needs a custom location
   },
+
+  router: {
+    middleware: 'auth',
+  },
 }

@@ -11,9 +11,5 @@ export default class extends Vue {
   mounted() {
     // todo
   }
-
-  validate() {
-    return false
-  }
 }
 </script>
