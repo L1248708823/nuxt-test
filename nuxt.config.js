@@ -14,7 +14,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['element-ui/lib/theme-chalk/index.css'],
+  css: ['element-ui/lib/theme-chalk/index.css', 'assets/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['@/plugins/element-ui'],
@@ -40,5 +40,10 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: [/^element-ui/],
+  },
+
+  generate: {
+    fallback: true, // if you want to use '404.html'
+    // fallback: 'my-fallback/file.html', // if your hosting needs a custom location
   },
 }
