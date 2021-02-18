@@ -1,17 +1,18 @@
 import { Module, VuexModule, Mutation, getModule } from 'vuex-module-decorators'
-import store from './store'
+import Store from '~/store/store'
 @Module({
   name: 'TestModule',
-  store,
+  store: Store,
   dynamic: true,
   namespaced: true,
 })
-class MyModule extends VuexModule {
+class TestModule extends VuexModule {
   wheels = 2
 
   @Mutation
   incrWheels(extra: number) {
-    this.wheels += extra
+    this.wheels = extra + this.wheels
+    console.log(this.wheels)
   }
 
   get axles() {
@@ -19,4 +20,4 @@ class MyModule extends VuexModule {
   }
 }
 
-export default getModule(MyModule)
+export default getModule(TestModule)

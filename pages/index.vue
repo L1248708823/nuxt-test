@@ -4,23 +4,8 @@
       <Logo />
       <h1 class="title">nuxt-test</h1>
       <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-
+        {{ wheels }}
+        <button @click="add">+</button>
         <nuxt-link :to="'user/1'">USER</nuxt-link>
       </div>
     </div>
@@ -28,9 +13,38 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { Vue, Component } from 'nuxt-property-decorator'
+import TestModule from '~/store/TestModule'
+@Component
+export default class extends Vue {
+  id = ''
+  mounted() {
+    // todo
+    console.log(TestModule.wheels, 'mounted')
+    this.id = (this.$route.params?.id as string) || ''
+  }
 
-export default Vue.extend({})
+  asyncData() {
+    return { name: 'hello world' }
+  }
+
+  // fetch() {
+  //   console.log('store')
+  //   TestModule.incrWheels(20)
+  //   console.log(TestModule.wheels, 'fetch')
+  // }
+
+  get wheels() {
+    return TestModule.wheels
+  }
+
+  add() {
+    TestModule.incrWheels(1)
+  }
+  // validate() {
+  //   return false
+  // }
+}
 </script>
 
 <style>
