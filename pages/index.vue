@@ -20,6 +20,8 @@
         >
           GitHub
         </a>
+
+        <nuxt-link :to="'user/1'">USER</nuxt-link>
       </div>
     </div>
   </div>
